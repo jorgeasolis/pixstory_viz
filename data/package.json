@@ -1,0 +1,14 @@
+{
+  "name": "15e7e05643d8cf57",
+  "main": "15e7e05643d8cf57@368.js",
+  "version": "368.0.0",
+  "homepage": "https://observablehq.com/d/15e7e05643d8cf57",
+  "author": {
+    "name": "DSCI550",
+    "url": "https://observablehq.com/@dsci550assignment3"
+  },
+  "type": "module",
+  "peerDependencies": {
+    "@observablehq/runtime": "4 - 5"
+  }
+}

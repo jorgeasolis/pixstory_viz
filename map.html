@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>Pixstory - WebDataViz</title>
+
+        <!-- Custom fonts for this template-->
+        <link
+            href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+            rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+
+        <!-- Custom styles for this template-->
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+        <!-- Latest compiled JavaScript -->
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+        <!-- Custom CSS -->
+        <link href="static/css/scrolling-nav.css" rel="stylesheet">
+        <link href="static/css/bootstrap.min.css" rel="stylesheet">
+        <link href="static/css/sb-admin-2.min.css" rel="stylesheet">
+        <link href="static/css/my_css.css" rel="stylesheet">
+        <link href="static/css/styles.css" rel="stylesheet">
+        <link href="static/css/states.css" rel="stylesheet">
+        <link href="static/css/inspector.css" rel="stylesheet" type="text/css" >
+
+    </head>
+
+    <body id="page-top">
+
+        <!-- Page Wrapper -->
+        <div id="wrapper">
+
+            <!-- Content Wrapper -->
+            <div id="content-wrapper" class="d-flex flex-column">
+
+                <!-- Main Content -->
+                <div id="content">
+
+                    <!-- Topbar -->
+                    <nav class="navbar navbar-expand-lg navbar-light">
+                        <div class="container" style="text-align: center;">
+                            <div class="row w-100">
+                                <div class="col-12" style="text-align: center;">
+                                    <h2 class="p-4">
+                                        Pixstory - WebDataViz
+                                    </h2>
+                                </div>
+                            </div>
+                        </div>
+                    </nav>
+
+                    <nav class="navbar navbar-expand-lg navbar-light mb-4">
+
+                        <div class="container-fluid">
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                </button>
+                            </div>
+
+                            <a class="navbar-brand navbar text-white mr-4 p-4" href="index.html">Home</a>
+
+                            <div class="collapse navbar-collapse" id="navbarNav">
+                                <ul class="navbar-nav">
+                                    <li class="nav-item active mr-4 p-4">
+                                        <a class="nav-brand" style="color:#900000" href="#">Map</a>
+                                    </li>
+                                    <li class="nav-item mr-4 p-4">
+                                        <a class="nav-brand text-white" href="tree.html">Treemap</a>
+                                    </li>
+                                    <li class="nav-item p-4">
+                                        <a class="nav-brand text-white" href="circle.html">Circle</a>
+                                    </li>
+                                    <!-- <li class="nav-item mr-4 p-4">
+                                        <a class="nav-brand text-white" href="cal.html">Calendar</a>
+                                    </li> -->
+                                    <li class="nav-item p-4">
+                                        <a class="nav-brand text-white" href="bubble.html">Bubble</a>
+                                    </li>
+                                    <li class="nav-item p-4">
+                                        <a class="nav-brand text-white" href="word.html">Word Cloud</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </nav>                    
+                    <!-- End of Topbar -->
+
+
+                    <!-- Begin Page Content -->
+                    <div class="container-fluid" style="text-align: center;">
+
+                        <div class="row" style="text-align: center;">
+
+                            <div class="col-lg-12" style="text-align: center;">
+
+                                <div class="card" style="text-align: center;">
+
+                                    <div class="card-body" style="text-align: center;">
+
+                                        <div class="row m-4" style="text-align: center;">
+                                            <h4>
+                                                This Treemap shows the number of posts that mentioned each of the US states after 
+                                                we applied the filters indicated.
+                                            </h4>
+                                        </div>
+
+                                        <div class="row m-4" style="text-align: center;">
+                                            <div class="col-lg-12" style="text-align: center;">
+                                                <div id="tooltip"></div>
+                                                <!--<div id="map_viz"></div>-->
+                                                <svg width="960" height="600" id="map_viz"></svg>
+                                            </div>
+                                            
+                                            <div class="col-lg-4 align-items-center">
+
+                                                <div class="card shadow mb-4">
+                                                    <!-- Card Header - Dropdown -->
+                                                    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between"
+                                                        style="background-color: #900000; color: white;">
+                                                        <h6 class="m-0 font-weight-bold text-white">Adjust values</h6>
+                                                    </div>
+                                                    <!-- Card Body -->
+                                                    <div class="card-body align-items-center">
+        
+                                                        <div class="col-lg-3">
+                                                            <div style="text-align: center;">
+                                                                <h6 class="font-weight-bold" style="color: #900000;">
+                                                                    Toxicity
+                                                                </h6>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-lg-6">
+                                                            <div class="row" style="text-align: center;">
+                                                                <div class="col-lg-12">
+                                                                    <select class="form-select" id="toxicity_map">
+                                                                        <option selected value="1">All data</option>
+                                                                        <option value="2"> > 0.001</option>
+                                                                        <option value="3"> > 0.01 </option>
+                                                                        <option value="4"> > 0.1 </option>
+                                                                        <option value="5"> > 0.5 </option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-lg-3">
+                                                            <div style="text-align: center;">
+                                                                <a href="#" onclick="update_map()" class="d-none d-sm-inline-block btn shadow-sm"
+                                                                    style="background-color: #900000; color: white;">
+                                                                    Update
+                                                                </a>
+                                                            </div>
+        
+                                                        </div>
+        
+                                                    </div>
+        
+                                                </div>
+        
+        
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            
+                        </div>
+
+                    </div>
+                    <!-- /.container-fluid -->
+
+                </div>
+                <!-- End of Main Content -->
+
+                <!-- Footer -->
+                <footer class="sticky-footer mt-4">
+                    <div class="container my-auto">
+                        <div class="copyright text-center my-auto">
+                            <span>Copyright &copy; Team 1 - DSCI550 Spring 2023</span>
+                        </div>
+                    </div>
+                </footer>
+                <!-- End of Footer -->
+
+            </div>
+            <!-- End of Content Wrapper -->
+
+        </div>
+        <!-- End of Page Wrapper -->
+
+        <!-- Scroll to Top Button-->
+        <a class="scroll-to-top rounded" href="#page-top">
+            <i class="fas fa-angle-up"></i>
+        </a>
+
+        <!-- Bootstrap core JavaScript-->
+        <script src="static/vendor/jquery/jquery.min.js"></script>
+        <script src="static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+        <!-- Core plugin JavaScript-->
+        <script src="static/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+        <!-- Custom scripts for all pages-->
+        <script src="static/js/sb-admin-2.min.js"></script>
+
+        <script src="http://d3js.org/d3.v3.min.js"></script>
+        <script src="static/js/jquery-1.12.1.min.js"></script>
+        <script src="static/js/uStates.js"></script>
+
+
+        <script>
+            update_map();
+            //set the global variables
+
+            //const solrUrl = 'http://127.0.0.1:8983/solr/pixstory/select?';
+            //const solrUrl = 'http://127.0.0.1:8983/solr/pixstory/select?q=*:*&wt=json';
+            /*
+            $.ajax(
+                {
+                    type: 'GET',
+                    dataType: 'json',
+                    data: {
+                        'q': '*:*',
+                        'wt': 'json',
+                    },
+                    headers: {
+                        "Access-Control-Allow-Origin: *",
+                        'Content-Type: application/json',
+                    },
+                    url: solrUrl,
+                    success: function(msg) {
+                        console.log(msg);
+                    }
+                }
+            );
+
+
+            $.ajax({
+                url: solrUrl,
+                data: {
+                    'q': '*:*',
+                    'wt': 'json',
+                },
+                success: function(msg) {
+                    console.log(msg);
+                },
+                headers: {
+                    'Content-Type':'plain/text',
+                },
+                dataType: 'jsonp',
+                jsonp: 'json.wrf'
+            });*/
+
+            /*
+            fetch(solrUrl)
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data); // do something with the data
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+            */
+
+            /* function to create html content string in tooltip div. */
+            function tooltipHtml(n, d){
+                var tooltipData = "<h4>" + n + "</h4><table>";
+                var plainCount = d['Posts'];
+                if (plainCount == undefined) {
+                    plainCount = '0';
+                }
+
+                tooltipData += "<tr><td> Posts: </td><td>" +"\ "+ plainCount + "</td></tr>";
+                tooltipData += "</table";
+                return tooltipData;
+            }
+
+            var data = {};
+            var maxCount = 0;
+            d3.json("data/pix_us_states.json", function(error, mapJson) {
+                if (error) throw error;
+
+                $.each(mapJson, function(i, stateObject) {
+                    var countPerState = 0;
+                    $.each(stateObject, function(i, count) {
+                        countPerState += parseInt(count);
+                    });
+                    if (parseInt(countPerState) > parseInt(maxCount)) {
+                        maxCount = countPerState;
+                    }
+                    //console.log(countPerState);
+                    //console.log(maxCount);
+                    //stateObject["color"] = d3.interpolate("#ffffcc", "#800026")(countPerState / maxCount);
+                    stateObject["color"] = d3.interpolate("#ffffcc", "#800026")(countPerState / maxCount);
+                    mapJson[i] = stateObject;
+                });
+
+                /* draw states on id #statesvg */
+                ["HI", "AK", "FL", "SC", "GA", "AL", "NC", "TN", "RI", "CT", "MA",
+                    "ME", "NH", "VT", "NY", "NJ", "PA", "DE", "MD", "WV", "KY", "OH",
+                    "MI", "WY", "MT", "ID", "WA", "DC", "TX", "CA", "AZ", "NV", "UT",
+                    "CO", "NM", "OR", "ND", "SD", "NE", "IA", "MS", "IN", "IL", "MN",
+                    "WI", "MO", "AR", "OK", "KS", "LS", "VA"
+                ]
+                .forEach(function(d) {
+                    if (mapJson.hasOwnProperty(d)) {
+                        data[d] = mapJson[d];
+                        console.log(data[d]);
+                    } else {
+                        data[d] = {
+                            "Posts": "0",
+                            "color": "#ffffcc"
+                        };
+                    }
+                });
+                //uStates.draw("#map_viz", data, tooltipHtml);
+
+                //d3.select(self.frameElement).style("height", "600px");
+            });
+
+
+            function update_map(){
+
+                document.getElementById('map_viz').innerHTML = '';
+
+                var files = [
+                    'data/pix_us_states.json',
+                    'data/pix_us_states.json',
+                    'data/pix_us_states.json',
+                    'data/pix_us_states_4.json',
+                    'data/pix_us_states.json',
+                ];
+
+                var option = document.getElementById('toxicity_map').value;
+                var file = 'data/pix_us_states.json';
+                if(parseInt(option) != 0){
+                    file = files[parseInt(option) - 1];
+                }
+
+                var data = {};
+                var maxCount = 0;
+                d3.json(file, function(error, mapJson) {
+                    if (error) throw error;
+
+                    $.each(mapJson, function(i, stateObject) {
+                        var countPerState = 0;
+                        $.each(stateObject, function(i, count) {
+                            countPerState += parseInt(count);
+                        });
+                        if (parseInt(countPerState) > parseInt(maxCount)) {
+                            maxCount = countPerState;
+                        }
+                        stateObject["color"] = d3.interpolate("#ffffcc", "#800026")(countPerState / maxCount);
+                        mapJson[i] = stateObject;
+                    });
+
+                    /* draw states on id #statesvg */
+                    ["HI", "AK", "FL", "SC", "GA", "AL", "NC", "TN", "RI", "CT", "MA",
+                        "ME", "NH", "VT", "NY", "NJ", "PA", "DE", "MD", "WV", "KY", "OH",
+                        "MI", "WY", "MT", "ID", "WA", "DC", "TX", "CA", "AZ", "NV", "UT",
+                        "CO", "NM", "OR", "ND", "SD", "NE", "IA", "MS", "IN", "IL", "MN",
+                        "WI", "MO", "AR", "OK", "KS", "LS", "VA"
+                    ]
+                    .forEach(function(d) {
+                        if (mapJson.hasOwnProperty(d)) {
+                            data[d] = mapJson[d];
+                            console.log(data[d]);
+                        } else {
+                            data[d] = {
+                                "Posts": "0",
+                                "color": "#ffffcc"
+                            };
+                        }
+                    });
+                    uStates.draw("#map_viz", data, tooltipHtml);
+
+                    //d3.select(self.frameElement).style("height", "600px");
+                });
+
+            }
+
+            
+            /*
+            var sampleData ={};	 	
+            ["HI", "AK", "FL", "SC", "GA", "AL", "NC", "TN", "RI", "CT", "MA",
+            "ME", "NH", "VT", "NY", "NJ", "PA", "DE", "MD", "WV", "KY", "OH", 
+            "MI", "WY", "MT", "ID", "WA", "DC", "TX", "CA", "AZ", "NV", "UT", 
+            "CO", "NM", "OR", "ND", "SD", "NE", "IA", "MS", "IN", "IL", "MN", 
+            "WI", "MO", "AR", "OK", "KS", "LS", "VA"]
+                .forEach(function(d){ 
+                    var low=Math.round(100*Math.random()), 
+                        mid=Math.round(100*Math.random()), 
+                        high=Math.round(100*Math.random());
+                    sampleData[d]={low:d3.min([low,mid,high]), high:d3.max([low,mid,high]), 
+                            avg:Math.round((low+mid+high)/3), color:d3.interpolate("#ffffcc", "#800026")(low/100)}; 
+                });
+            
+            
+            uStates.draw("#statesvg", sampleData, tooltipHtml);
+            
+            d3.select(self.frameElement).style("height", "600px");
+
+
+            
+
+            function tooltipHtml(n, d) { 
+                var tooltipData = "<h4>" + n + "</h4><table>";
+                var plainCount = d['Posts'];
+                if (plainCount == undefined) {
+                    plainCount = '0';
+                }
+
+                tooltipData += "<tr><td> Number of posts: </td><td>" +"\ "+ plainCount + "</td></tr>";
+                tooltipData += "</table";
+                return tooltipData;
+            }
+
+            var data = {};
+            var maxCount = 0;
+
+            d3.json("data/test.json", function(error, mapJson) {
+                if (error) throw error;
+                $.each(mapJson, function(i, stateObject) {
+                    var countPerState = 0;
+                    $.each(stateObject, function(i, count) {
+                        countPerState += count;
+                    });
+                    if (countPerState > maxCount) {
+                        maxCount = countPerState;
+                    }
+                });
+
+                $.each(mapJson, function(i, stateObject) {
+                    var countPerState = 0;
+                    $.each(stateObject, function(i, count) {
+                        countPerState += count;
+                    });
+                    //stateObject["color"] = d3.interpolate("#ffffcc", "#800026")(countPerState / maxCount);
+                    stateObject["color"] = d3.interpolate("#9dfcc3", "#02149c")(countPerState / maxCount);
+                    mapJson[i] = stateObject;
+                });
+
+                ["HI", "AK", "FL", "SC", "GA", "AL", "NC", "TN", "RI", "CT", "MA",
+                    "ME", "NH", "VT", "NY", "NJ", "PA", "DE", "MD", "WV", "KY", "OH",
+                    "MI", "WY", "MT", "ID", "WA", "DC", "TX", "CA", "AZ", "NV", "UT",
+                    "CO", "NM", "OR", "ND", "SD", "NE", "IA", "MS", "IN", "IL", "MN",
+                    "WI", "MO", "AR", "OK", "KS", "LS", "VA"
+                ]
+                .forEach(function(d) {
+                    if (mapJson.hasOwnProperty(d)) {
+                        data[d] = mapJson[d];
+                    } else {
+                        data[d] = {
+                            "Content-Type": "NA",
+                            "color": "#000000"
+                        };
+                    }
+                });
+                uStates.draw("#statesvg", data, tooltipHtml);
+            }); */
+
+        </script>
+
+    </body>
+
+</html>
