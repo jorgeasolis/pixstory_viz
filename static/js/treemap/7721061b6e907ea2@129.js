@@ -11,7 +11,7 @@ Treemap(flare, {
   group: (d, n) => n.ancestors().slice(-2)[0].data.name, // e.g., "animate" in flare/animate/Easing; color
   label: (d, n) => [...d.name.split(/(?=[A-Z][a-z])/g), n.value.toLocaleString("en")].join("\n"),
   title: (d, n) => `${d.name}\n${n.value.toLocaleString("en")}`,
-  width: 1152,
+  width: 1300,
   height: 2000
 })
 )}
@@ -39,6 +39,6 @@ export default function define(runtime, observer) {
   main.import("Treemap", child1);
   const child2 = runtime.module(define2);
   main.import("Swatches", child2);
-  main.variable(observer()).define(["howto"], _7);
+  //main.variable(observer()).define(["howto"], _7);
   return main;
 }
