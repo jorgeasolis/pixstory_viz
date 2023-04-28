@@ -1,18 +1,12 @@
 // https://observablehq.com/@d3/calendar@806
 import define1 from "./a33468b95d0b15b0@808.js";
 
-function _1(dji,md){return(
-md`# Calendar
-
-This chart shows daily changes of the Dow Jones Industrial Average from. Days the index went up are green, and down are pink. Data: [Yahoo Finance](https://finance.yahoo.com/quote/%5EDJI/history/)`
-)}
-
 function _weekday(Inputs){return(
-Inputs.select(new Map([
-  ["Weekdays only", "weekday"],
-  ["Sunday-based weeks", "sunday"],
-  ["Monday-based weeks", "monday"],
-]))
+  Inputs.select(new Map([
+    ["Sunday-based weeks", "sunday"],
+    ["Weekdays only", "weekday"],
+    ["Monday-based weeks", "monday"],
+  ]))
 )}
 
 function _key(Legend,chart){return(
@@ -24,8 +18,9 @@ Calendar(dji, {
   x: d => d.Date,
   //y: (d, i, data) => i > 0 ? (d.Close - data[i - 1].Close) / data[i - 1].Close : NaN, // relative change
   //y: d => d.Number, // relative change
-  y: d => d.Toxicity, // relative change
-  //yFormat: "+%", // show percent change on hover
+  y: (d, i, data) => d.Toxicity, // relative change
+  //yFormat: ` ${d.Toxicity}\nPosts: ${d.Posts}`, // relative change
+  //yFormat: "Toxicity (avg):+", // show percent change on hover
   weekday,
   width
 })
@@ -159,21 +154,18 @@ export default function define(runtime, observer) {
   const main = runtime.module();
   function toString() { return this.url; }
   const fileAttachments = new Map([
-    //["^DJI@2.csv", {url: new URL("./files/754e2916be7548300012f5d0d6406308809baff7a2419cca200561b60eb4e788a826f8a588c66afdecbe119eea3b03725a5182fca591c03bc8cdfb1071436085.csv", import.meta.url), mimeType: "text/csv", toString}]
-    //["^DJI@2.csv", {url: new URL("./files/ds_dates.csv", import.meta.url), mimeType: "text/csv", toString}]
-    ["^DJI@2.csv", {url: new URL("../../../data/ds_toxicity.csv", import.meta.url), mimeType: "text/csv", toString}]
-    //["^DJI@2.csv", {url: new URL("../../../data/pix_calendar.csv", import.meta.url), mimeType: "text/csv", toString}]
+    //["^DJI@2.csv", {url: new URL("../../../data/754e2916be7548300012f5d0d6406308809baff7a2419cca200561b60eb4e788a826f8a588c66afdecbe119eea3b03725a5182fca591c03bc8cdfb1071436085.csv", import.meta.url), mimeType: "text/csv", toString}]
+    //["^DJI@2.csv", {url: new URL("../../../data/ds_dates.csv", import.meta.url), mimeType: "text/csv", toString}]
+    //["^DJI@2.csv", {url: new URL("../../../data/ds_toxicity.csv", import.meta.url), mimeType: "text/csv", toString}]
+    ["^DJI@2.csv", {url: new URL("../../../data/pix_calendar.csv", import.meta.url), mimeType: "text/csv", toString}]
   ]);
   main.builtin("FileAttachment", runtime.fileAttachments(name => fileAttachments.get(name)));
   //main.variable().define(["dji","md"], _1);
-  main.variable(observer("viewof weekday")).define("viewof weekday", ["Inputs"], _weekday);
-  //main.variable(observer("weekday")).define("weekday", ["Generators", "viewof weekday"], (G, _) => G.input(_));
+  main.variable().define("viewof weekday", ["Inputs"], _weekday);
   main.variable().define("weekday", ["Generators", "viewof weekday"], (G, _) => G.input(_));
   main.variable().define("key", ["Legend","chart"], _key);
   main.variable(observer("chart")).define("chart", ["Calendar","dji","weekday","width"], _chart);
-  //main.variable(observer("dji")).define("dji", ["FileAttachment"], _dji);
   main.variable().define("dji", ["FileAttachment"], _dji);
-  //main.variable(observer("Calendar")).define("Calendar", ["d3"], _Calendar);
   main.variable().define("Calendar", ["d3"], _Calendar);
   const child1 = runtime.module(define1);
   main.import("Legend", child1);
